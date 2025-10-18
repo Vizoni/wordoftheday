@@ -26,6 +26,7 @@ export const InputSingleLetter = forwardRef<HTMLInputElement, InputSingleLetterP
         value={letterState?.letter || props.value}
         className={cn(
           'border-2 rounded-md p-2 w-12 h-12 text-center uppercase font-bold',
+          'wordle-letter-base',
           'wordle-letter-default',
           'focus:outline-none transition-all duration-200',
           '[&:focus]:wordle-letter-focus',

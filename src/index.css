@@ -10,11 +10,14 @@
   --color-absent: oklch(0.45 0.02 264.46);
   --color-present: oklch(0.65 0.15 85.87);
   --color-correct: oklch(0.55 0.15 142.68);
-  --color-border: oklch(0.85 0.02 264.46);
+  --color-border: #4C4347;
   --color-border-focus: oklch(0.55 0.02 264.46);
   --color-text: oklch(0.15 0.02 264.46); 
   --color-text-contrast: oklch(0.99 0 0); 
-  
+  --color-bg-darker: #2d2828;
+  --color-bg-lighter: #6b6363;
+  --color-bg-base: #6e5c62;
+
 }
 
 :root {
@@ -24,7 +27,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #494646;
+  background-color: var(--color-bg-base);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,51 +35,27 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+
+.wordle-letter-base {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  user-select: none;
+  transition: background-color 0.3s var(--ease-fluid), border-color 0.3s var(--ease-fluid), color 0.3s var(--ease-fluid);
 }
 
 .wordle-letter-default {
-  background-color: var(--color-default);
-  color: var(--color-text);
+  /* background-color: var(--color-default); */
+  background-color: var(--bg-base);
+  color: var(--color-text--contrast);
   border-color: var(--color-border);
+  border-width: 4px;
 }
 
 .wordle-letter-absent {
@@ -99,6 +78,20 @@ button:focus-visible {
 
 .wordle-letter-focus {
   border-color: var(--color-border-focus);
+  border-bottom: 10px;
+}
+
+.bg-darker {
+  background-color: var(--color-bg-darker)
+}
+.bg-base {
+  background-color: var(--color-bg-base)
+}
+.bg-lighter {
+  background-color: var(--color-bg-lighter)
+}
+.bg-transparent {
+  background-color: 'transparent'
 }
 
 @media (prefers-color-scheme: light) {
