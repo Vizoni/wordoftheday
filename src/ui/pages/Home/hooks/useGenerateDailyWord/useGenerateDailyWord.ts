@@ -23,9 +23,6 @@ export const useGenerateDailyWord = () => {
       const randomIndex = Math.floor(Math.random() * words.length);
       const selectedWord = words[randomIndex].trim();
 
-      console.info('random index', randomIndex);
-      console.info('selectedWord', selectedWord);
-
       setCurrentWord(selectedWord);
     } catch (error) {
       console.error('Erro ao carregar palavras:', error);
