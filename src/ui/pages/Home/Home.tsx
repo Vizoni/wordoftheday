@@ -14,12 +14,12 @@ export const Home = () => {
       {Array.from({ length: maxTries }, (_, index) => {
         if (index + 1 !== currentTry) {
           return (
-            <div key={index} className={`flex flex-row gap-2`}>
-              <InputSingleLetter disabled value={guessedWords[index]?.['letter-1'].letter} />
-              <InputSingleLetter disabled value={guessedWords[index]?.['letter-2'].letter} />
-              <InputSingleLetter disabled value={guessedWords[index]?.['letter-3'].letter} />
-              <InputSingleLetter disabled value={guessedWords[index]?.['letter-4'].letter} />
-              <InputSingleLetter disabled value={guessedWords[index]?.['letter-5'].letter} />
+            <div key={index} className='flex flex-row gap-2'>
+              <InputSingleLetter disabled letterState={guessedWords[index]?.['letter-1']} />
+              <InputSingleLetter disabled letterState={guessedWords[index]?.['letter-2']} />
+              <InputSingleLetter disabled letterState={guessedWords[index]?.['letter-3']} />
+              <InputSingleLetter disabled letterState={guessedWords[index]?.['letter-4']} />
+              <InputSingleLetter disabled letterState={guessedWords[index]?.['letter-5']} />
             </div>
           );
         }

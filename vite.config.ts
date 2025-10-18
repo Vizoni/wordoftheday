@@ -14,6 +14,7 @@ export default defineConfig({
       ui: path.resolve(__dirname, 'src/ui'),
       routes: path.resolve(__dirname, 'src/routes'),
       components: path.resolve(__dirname, 'src/components'),
+      utils: path.resolve(__dirname, 'src/utils'),
     },
   },
   build: {

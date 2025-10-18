@@ -22,7 +22,8 @@
     "paths": {
       "components/*": ["components/*"],
       "ui/*": ["ui/*"],
-      "routes/*": ["routes/*"]
+      "routes/*": ["routes/*"],
+      "utils/*": ["utils/*"]
     },
     "incremental": true,
     "noUnusedLocals": true,

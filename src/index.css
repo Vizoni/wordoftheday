@@ -1,5 +1,22 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-display: "Satoshi", "sans-serif";
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Base Colors */
+  --color-default: oklch(0.95 0.02 264.46); 
+  --color-absent: oklch(0.45 0.02 264.46);
+  --color-present: oklch(0.65 0.15 85.87);
+  --color-correct: oklch(0.55 0.15 142.68);
+  --color-border: oklch(0.85 0.02 264.46);
+  --color-border-focus: oklch(0.55 0.02 264.46);
+  --color-text: oklch(0.15 0.02 264.46); 
+  --color-text-contrast: oklch(0.99 0 0); 
+  
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -54,6 +71,34 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.wordle-letter-default {
+  background-color: var(--color-default);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.wordle-letter-absent {
+  background-color: var(--color-absent);
+  color: var(--color-text-contrast);
+  border-color: var(--color-absent);
+}
+
+.wordle-letter-present {
+  background-color: var(--color-present);
+  color: var(--color-text-contrast);
+  border-color: var(--color-present);
+}
+
+.wordle-letter-correct {
+  background-color: var(--color-correct);
+  color: var(--color-text-contrast);
+  border-color: var(--color-correct);
+}
+
+.wordle-letter-focus {
+  border-color: var(--color-border-focus);
 }
 
 @media (prefers-color-scheme: light) {

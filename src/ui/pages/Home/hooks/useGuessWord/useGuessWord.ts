@@ -6,6 +6,11 @@ import { formDefaultValues, guessSchema } from './useGuessWord.utils';
 import { useCompareWord } from './hooks/useCompareWord/useCompareWord';
 
 export type GuessSchemaType = z.infer<typeof guessSchema>;
+export type LetterState = {
+  letter: string;
+  exists: boolean;
+  isInCorrectPosition: boolean;
+};
 
 type UseGuessWordProps = {
   currentWord: string;
