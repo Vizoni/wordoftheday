@@ -41,6 +41,14 @@ export const useGuessWord = () => {
     defaultValues,
   });
 
+  const handleKeyDown = (e: any) => {
+    // const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSubmit(submitGuess)(e);
+    }
+  };
+
   const submitGuess = (data: GuessSchemaType) => {
     console.info('submitGuess', data);
     setGuessedLetters((prev) => [...prev, data]);
@@ -57,5 +65,6 @@ export const useGuessWord = () => {
     currentGuess,
     handleSubmit,
     errors,
+    handleKeyDown,
   };
 };

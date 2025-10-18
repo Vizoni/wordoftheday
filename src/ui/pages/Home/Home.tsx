@@ -4,7 +4,7 @@ import { useGuessWord } from './hooks/useGuessWord/useGuessWord';
 
 export const Home = () => {
   const { currentWord } = useGenerateDailyWord();
-  const { maxTries, currentTry, register, submitGuess, handleSubmit, errors } = useGuessWord();
+  const { maxTries, currentTry, register, handleKeyDown, errors } = useGuessWord();
 
   return (
     <div className='flex flex-col items-center justify-center h-screen gap-4'>
@@ -23,13 +23,7 @@ export const Home = () => {
         }
       })}
       {currentTry <= maxTries && (
-        <form
-          className='flex flex-col gap-4'
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit(submitGuess)(e);
-          }}
-        >
+        <form className='flex flex-col gap-4' onKeyDown={(e) => handleKeyDown(e)}>
           <div className='flex flex-row gap-2'>
             <InputSingleLetter {...register('letter-1')} />
             <InputSingleLetter {...register('letter-2')} />
@@ -37,9 +31,6 @@ export const Home = () => {
             <InputSingleLetter {...register('letter-4')} />
             <InputSingleLetter {...register('letter-5')} />
           </div>
-          <button type='submit' className='mt-2 p-2 bg-blue-500 text-white rounded-md'>
-            Enviar (Tentativa {currentTry})
-          </button>
         </form>
       )}
       {errors && <div style={{ color: 'red' }}>Erros: {JSON.stringify(errors, null, 2)}</div>}
