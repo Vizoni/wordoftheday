@@ -48,11 +48,16 @@ export const useGuessWord = ({ currentWord }: UseGuessWordProps) => {
     }
   };
 
+  const focusOnFirstElement = () => {
+    document.getElementById('first-input')?.focus();
+  };
+
   const submitGuess = (data: GuessSchemaType) => {
     console.info('submitGuess', data);
     setCurrentTry((prev) => prev + 1);
     reset();
     updateGuessedLettersWithComparison(data);
+    focusOnFirstElement();
   };
 
   return {

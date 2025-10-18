@@ -27,7 +27,7 @@ export const Home = () => {
       {currentTry <= maxTries && (
         <form className='flex flex-col gap-4' onKeyDown={(e) => handleKeyDown(e)}>
           <div className='flex flex-row gap-2'>
-            <InputSingleLetter {...register('letter-1.letter')} />
+            <InputSingleLetter {...register('letter-1.letter')} id='first-input' />
             <InputSingleLetter {...register('letter-2.letter')} />
             <InputSingleLetter {...register('letter-3.letter')} />
             <InputSingleLetter {...register('letter-4.letter')} />
