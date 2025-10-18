@@ -13,11 +13,11 @@ export const Home = () => {
         if (index + 1 !== currentTry) {
           return (
             <div key={index} className={`flex flex-row gap-2`}>
-              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-1']} />
-              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-2']} />
-              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-3']} />
-              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-4']} />
-              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-5']} />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-1'].letter} />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-2'].letter} />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-3'].letter} />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-4'].letter} />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-5'].letter} />
             </div>
           );
         }
@@ -25,11 +25,11 @@ export const Home = () => {
       {currentTry <= maxTries && (
         <form className='flex flex-col gap-4' onKeyDown={(e) => handleKeyDown(e)}>
           <div className='flex flex-row gap-2'>
-            <InputSingleLetter {...register('letter-1')} />
-            <InputSingleLetter {...register('letter-2')} />
-            <InputSingleLetter {...register('letter-3')} />
-            <InputSingleLetter {...register('letter-4')} />
-            <InputSingleLetter {...register('letter-5')} />
+            <InputSingleLetter {...register('letter-1.letter')} />
+            <InputSingleLetter {...register('letter-2.letter')} />
+            <InputSingleLetter {...register('letter-3.letter')} />
+            <InputSingleLetter {...register('letter-4.letter')} />
+            <InputSingleLetter {...register('letter-5.letter')} />
           </div>
         </form>
       )}
