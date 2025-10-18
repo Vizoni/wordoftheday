@@ -14,9 +14,9 @@ type UseGuessWordProps = {
 export const useGuessWord = ({ currentWord }: UseGuessWordProps) => {
   const maxTries = 5;
   const [currentTry, setCurrentTry] = useState<number>(1);
-  const [guessedLetters, setGuessedLetters] = useState<GuessSchemaType[]>([]);
+  const [guessedWords, setGuessedWords] = useState<GuessSchemaType[]>([]);
 
-  const currentGuess = guessedLetters[currentTry - 1] || '';
+  const currentGuess = guessedWords[currentTry - 1] || '';
 
   const { compareWord } = useCompareWord({ wordOfTheDay: currentWord });
 
@@ -32,7 +32,7 @@ export const useGuessWord = ({ currentWord }: UseGuessWordProps) => {
 
   const updateGuessedLettersWithComparison = (data: GuessSchemaType) => {
     const response = compareWord(data);
-    setGuessedLetters((prev) => [...prev, response]);
+    setGuessedWords((prev) => [...prev, response]);
   };
 
   const handleKeyDown = (e: any) => {
@@ -54,8 +54,8 @@ export const useGuessWord = ({ currentWord }: UseGuessWordProps) => {
     maxTries,
     currentTry,
     setCurrentTry,
-    guessedLetters,
-    setGuessedLetters,
+    guessedWords,
+    setGuessedWords,
     register,
     submitGuess,
     currentGuess,
