@@ -36,6 +36,7 @@ export const useGuessWord = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<GuessSchemaType>({
     resolver: zodResolver(guessSchema),
     defaultValues,
@@ -52,6 +53,8 @@ export const useGuessWord = () => {
   const submitGuess = (data: GuessSchemaType) => {
     console.info('submitGuess', data);
     setGuessedLetters((prev) => [...prev, data]);
+    setCurrentTry((prev) => prev + 1);
+    reset();
   };
 
   return {

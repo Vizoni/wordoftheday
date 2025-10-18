@@ -4,7 +4,7 @@ import { useGuessWord } from './hooks/useGuessWord/useGuessWord';
 
 export const Home = () => {
   const { currentWord } = useGenerateDailyWord();
-  const { maxTries, currentTry, register, handleKeyDown, errors } = useGuessWord();
+  const { maxTries, currentTry, register, handleKeyDown, errors, guessedLetters } = useGuessWord();
 
   return (
     <div className='flex flex-col items-center justify-center h-screen gap-4'>
@@ -13,11 +13,11 @@ export const Home = () => {
         if (index + 1 !== currentTry) {
           return (
             <div key={index} className={`flex flex-row gap-2`}>
-              <InputSingleLetter disabled />
-              <InputSingleLetter disabled />
-              <InputSingleLetter disabled />
-              <InputSingleLetter disabled />
-              <InputSingleLetter disabled />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-1']} />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-2']} />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-3']} />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-4']} />
+              <InputSingleLetter disabled value={guessedLetters[index]?.['letter-5']} />
             </div>
           );
         }
