@@ -4,7 +4,9 @@ import { useGuessWord } from './hooks/useGuessWord/useGuessWord';
 
 export const Home = () => {
   const { currentWord } = useGenerateDailyWord();
-  const { maxTries, currentTry, register, handleKeyDown, errors, guessedLetters } = useGuessWord();
+  const { maxTries, currentTry, register, handleKeyDown, errors, guessedLetters } = useGuessWord({
+    currentWord,
+  });
 
   return (
     <div className='flex flex-col items-center justify-center h-screen gap-4'>

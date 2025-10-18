@@ -21,7 +21,7 @@ export const useGenerateDailyWord = () => {
 
       // Selecionar uma palavra aleatória
       const randomIndex = Math.floor(Math.random() * words.length);
-      const selectedWord = words[randomIndex].trim();
+      const selectedWord = words[randomIndex].trim().toUpperCase();
 
       setCurrentWord(selectedWord);
     } catch (error) {

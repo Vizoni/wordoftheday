@@ -1,8 +1,11 @@
 import { z } from 'zod';
 
-const letterValidation = z.string().refine((val) => val === '' || /^[a-zA-ZÀ-ÿ]$/.test(val), {
-  message: 'Deve ser vazio ou apenas uma letra',
-});
+const letterValidation = z
+  .string()
+  .toUpperCase()
+  .refine((val) => val === '' || /^[a-zA-ZÀ-ÿ]$/.test(val), {
+    message: 'Deve ser vazio ou apenas uma letra',
+  });
 
 export const guessSchema = z.object({
   'letter-1': z.object({
