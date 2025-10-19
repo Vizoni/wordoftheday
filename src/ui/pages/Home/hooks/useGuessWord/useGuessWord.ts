@@ -72,5 +72,6 @@ export const useGuessWord = ({ currentWord }: UseGuessWordProps) => {
     handleSubmit,
     errors,
     handleKeyDown,
+    focusOnFirstElement,
   };
 };

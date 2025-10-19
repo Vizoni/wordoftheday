@@ -55,7 +55,6 @@ button {
   background-color: var(--bg-base);
   color: var(--color-text--contrast);
   border-color: var(--color-border);
-  border-width: 4px;
 }
 
 .wordle-letter-absent {
@@ -76,9 +75,9 @@ button {
   border-color: var(--color-correct);
 }
 
-.wordle-letter-focus {
-  border-color: var(--color-border-focus);
-  border-bottom: 10px;
+.wordle-letter-default:focus {
+  border-bottom-width: 0.250em !important;
+  border-bottom-color: var(--color-border) !important;
 }
 
 .bg-darker {
