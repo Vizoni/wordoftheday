@@ -16,6 +16,14 @@ type UseGuessWordProps = {
   currentWord: string;
 };
 
+const inputNames = [
+  'letter-1.letter',
+  'letter-2.letter',
+  'letter-3.letter',
+  'letter-4.letter',
+  'letter-5.letter',
+];
+
 export const useGuessWord = ({ currentWord }: UseGuessWordProps) => {
   const maxTries = 5;
   const [currentTry, setCurrentTry] = useState<number>(1);
@@ -30,34 +38,51 @@ export const useGuessWord = ({ currentWord }: UseGuessWordProps) => {
     handleSubmit,
     formState: { errors },
     reset,
+    setFocus,
   } = useForm<GuessSchemaType>({
     resolver: zodResolver(guessSchema),
     defaultValues: formDefaultValues,
   });
+
+  const handleRegister = (input: any) => {
+    const { name, onChange, ...rest } = register(input);
+    return {
+      name,
+      onChange: (e: any) => {
+        onChange(e);
+        setFocus(inputNames[inputNames.indexOf(name) + 1] as any);
+      },
+      ...rest,
+    };
+  };
 
   const updateGuessedLettersWithComparison = (data: GuessSchemaType) => {
     const response = compareWord(data);
     setGuessedWords((prev) => [...prev, response]);
   };
 
+  const getNewFocusAfterKeyPress = (currentInput: string, key: string) => {
+    const currentIndex = inputNames.indexOf(currentInput);
+    if (key === 'ArrowLeft') {
+      setFocus(inputNames[currentIndex - 1] as any);
+    } else if (key === 'ArrowRight') {
+      setFocus(inputNames[currentIndex + 1] as any);
+    }
+  };
+
   const handleKeyDown = (e: any) => {
-    // const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       handleSubmit(submitGuess)(e);
     }
-  };
-
-  const focusOnFirstElement = () => {
-    document.getElementById('first-input')?.focus();
+    getNewFocusAfterKeyPress(e.target.name, e.key);
   };
 
   const submitGuess = (data: GuessSchemaType) => {
-    console.info('submitGuess', data);
-    setCurrentTry((prev) => prev + 1);
-    reset();
     updateGuessedLettersWithComparison(data);
-    focusOnFirstElement();
+    reset();
+    setCurrentTry((prev) => prev + 1);
+    setFocus('letter-1.letter');
   };
 
   return {
@@ -72,6 +97,7 @@ export const useGuessWord = ({ currentWord }: UseGuessWordProps) => {
     handleSubmit,
     errors,
     handleKeyDown,
-    focusOnFirstElement,
+    setFocus,
+    handleRegister,
   };
 };

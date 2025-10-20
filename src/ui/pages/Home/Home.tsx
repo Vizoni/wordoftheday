@@ -7,14 +7,14 @@ import { useEffect } from 'react';
 
 export const Home = () => {
   const { currentWord } = useGenerateDailyWord();
-  const { maxTries, currentTry, register, handleKeyDown, guessedWords, focusOnFirstElement } =
+  const { maxTries, currentTry, handleKeyDown, guessedWords, setFocus, handleRegister } =
     useGuessWord({
       currentWord,
     });
 
   useEffect(() => {
-    focusOnFirstElement();
-  }, [focusOnFirstElement]);
+    setFocus('letter-1.letter');
+  }, []);
 
   return (
     <>
@@ -24,11 +24,11 @@ export const Home = () => {
         {currentTry <= maxTries && (
           <form className='flex flex-col' onKeyDown={(e) => handleKeyDown(e)}>
             <div className='flex flex-row gap-1'>
-              <InputSingleLetter {...register('letter-1.letter')} id='first-input' />
-              <InputSingleLetter {...register('letter-2.letter')} />
-              <InputSingleLetter {...register('letter-3.letter')} />
-              <InputSingleLetter {...register('letter-4.letter')} />
-              <InputSingleLetter {...register('letter-5.letter')} />
+              <InputSingleLetter {...handleRegister('letter-1.letter')} />
+              <InputSingleLetter {...handleRegister('letter-2.letter')} />
+              <InputSingleLetter {...handleRegister('letter-3.letter')} />
+              <InputSingleLetter {...handleRegister('letter-4.letter')} />
+              <InputSingleLetter {...handleRegister('letter-5.letter')} />
             </div>
           </form>
         )}
